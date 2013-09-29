@@ -1,0 +1,73 @@
+﻿ <style type="text/css">
+
+@page .test
+{   margin:0.1in 0.0in 0.0in 0.1in;
+    mso-header-margin:0.1in;
+    mso-footer-margin:0.1in;
+    size: 15in 12in;
+    mso-page-orientation: landscape;
+}
+
+.xl201
+	{mso-style-parent:style34;
+	font-size:20.0pt;
+	font-weight:700;
+	font-family:"TH Niramit AS";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	text-align:center;
+	border:.5pt solid windowtext;}
+.xl202
+	{mso-style-parent:style0;
+	color:black;
+	font-size:14.0pt;
+	font-family:"TH Niramit AS";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:Standard;
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+.xl203  
+	{mso-style-parent:style0;
+	color:black;
+	font-family:"TH Niramit AS";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:"\[THA\]\[$-1070000\]d\/mm\/yyyy\;\@";
+	text-align:center;
+	vertical-align:middle;
+	border:.5pt solid windowtext;
+	white-space:normal;}
+	
+.xl65
+	{mso-style-parent:style0;
+	color:black;
+	font-size:14.0pt;
+	font-weight:700;
+	font-family:"TH Niramit AS";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:Standard;
+	text-align:center;
+	vertical-align:middle;
+	border-top:.5pt solid windowtext;
+	border-right:.5pt solid windowtext;
+	border-bottom:none;
+	border-left:.5pt solid windowtext;
+	white-space:normal;}
+	
+.xl401  
+	{mso-style-parent:style46;
+	font-family:"TH Niramit AS";
+	mso-generic-font-family:auto;
+	mso-font-charset:0;
+	mso-number-format:Standard;
+	text-align:left;
+	border-top:.5pt solid windowtext;
+	border-right:none;
+	border-bottom:none;
+	border-left:none;
+	mso-protection:locked hidden;}
+</style>
