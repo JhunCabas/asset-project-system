@@ -50,6 +50,7 @@ session_start();
     <script src="../js/managePage.js" type="text/javascript"></script>
     <script src="../js/showAdd.js" type="text/javascript"></script>
     <script src="../js/validate.js" type="text/javascript"></script>
+    
 
 </head>
 <body>

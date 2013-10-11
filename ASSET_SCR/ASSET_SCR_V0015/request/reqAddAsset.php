@@ -42,13 +42,13 @@
 		$day = substr($assetAddDate,0,2);
 		$month = substr($assetAddDate,3,2);
 		$text = substr($assetAddDate,6,4);
-		$text2 = substr($assetAddDate,6,4);
+		$yearD = substr($assetAddDate,6,4);
 		
 		if($month>=10&&$month<=12){
-			$text2++;
+			$yearD++;
 		}
 		
-		$assYear = $text2+543;
+		$assYear = $yearD+543;
 		$year = $text-543;
 		$dateType = $dateM."".$year;
 
@@ -57,7 +57,7 @@
 		
 		if($assetNum==""){
 			$addAsset->setValues($assetCode,$assetName,$assetPrice,$assetTypeId,
-			$assetGroupId,$text2,$assetLocation,$dateT,$remark,$userId);
+			$assetGroupId,$yearD,$assetLocation,$dateT,$remark,$userId);
 			$addAsset->addAsset();
 			
 			$arr = $addAsset->getAssetIdToCheck($assetTypeId,$assetGroupId,$assetCode);
@@ -66,7 +66,7 @@
 			$addCheck->setAssetTypeId($assetTypeId);
 			$addCheck->setAssetGroupId($assetGroupId);
 			$addCheck->setAssetId($result['assetId']);
-			$addCheck->setAssetYear($text2);
+			$addCheck->setAssetYear($yearD);
 			$addCheck->setAssetAddDate($dateT);
 			$addCheck->setUserId($userId);
 			$addCheck->addCheckAsset();
@@ -79,7 +79,7 @@
 				$genCode = str_pad($gen+1, 3, "0", STR_PAD_LEFT);
 				
 				$addAsset->setValues($genCode,$assetName,$assetPrice,$assetTypeId,
-				$assetGroupId,$text2,$assetLocation,$dateT,$remark,$userId);
+				$assetGroupId,$yearD,$assetLocation,$dateT,$remark,$userId);
 				$addAsset->addAsset();
 				
 				$arr = $addAsset->getAssetIdToCheck($assetTypeId,$assetGroupId,$genCode);
@@ -88,7 +88,7 @@
 				$addCheck->setAssetTypeId($assetTypeId);
 				$addCheck->setAssetGroupId($assetGroupId);
 				$addCheck->setAssetId($result['assetId']);
-				$addCheck->setAssetYear($text2);
+				$addCheck->setAssetYear($yearD);
 				$addCheck->setAssetAddDate($dateT);
 				$addCheck->setUserId($userId);
 				$addCheck->addCheckAsset();
@@ -99,7 +99,7 @@
 		}
 		else{
 				$addAsset->setValues($assetCode,$assetName,$assetPrice,$assetTypeId,
-				$assetGroupId,$text2,$assetLocation,$dateT,$remark,$userId);
+				$assetGroupId,$yearD,$assetLocation,$dateT,$remark,$userId);
 				$addAsset->addAsset();
 				
 				$arr = $addAsset->getAssetIdToCheck($assetTypeId,$assetGroupId,$assetCode);
@@ -108,7 +108,7 @@
 				$addCheck->setAssetTypeId($assetTypeId);
 				$addCheck->setAssetGroupId($assetGroupId);
 				$addCheck->setAssetId($result['assetId']);
-				$addCheck->setAssetYear($text2);
+				$addCheck->setAssetYear($yearD);
 				$addCheck->setAssetAddDate($dateT);
 				$addCheck->setUserId($userId);
 				$addCheck->addCheckAsset();

@@ -26,7 +26,6 @@
 		private $assetTypeId;
 		private $assetGroupId;
 		private $userId;
-		private $search;
 		private $mysql;
 		private $error;
 

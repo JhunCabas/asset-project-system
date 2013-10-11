@@ -15,13 +15,17 @@ function validateLogin() {
 		if(!$('#username').val()){
 			$('#dialog').html('<center>กรุณาใส่ชื่อผู้ใช้</center>');
 			$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',
-			buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#username').focus();}}]});
+			buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+			$('#username').css("border-color","red");
+			$('#username').focus();}}]});
 			e.preventDefault();
 		}
 		else if(!$('#password').val()){
 			$('#dialog').html('<center>กรุณาใส่รหัสผ่าน</center>');
 			$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',
-			buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#password').focus();}}]});
+			buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+			$('#password').css("border-color","red");
+			$('#password').focus();}}]});
 			e.preventDefault();
 		}
 
@@ -42,7 +46,26 @@ function validateAddUser() {
 	{ 
 		$('#dialog').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#regUname').focus();}}]});
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		if($('#regUname').val() == ""){
+			$('#regUname').css("border-color","red");
+		}
+		else if($('#regPword').val() == ""){
+			$('#regPword').css("border-color","red");
+		}
+		else if($('#regRePword').val() == ""){
+			$('#regRePword').css("border-color","red");
+		}
+		else if($('#regFname').val() == ""){
+			$('#regFname').css("border-color","red");
+		}
+		else if($('#regLname').val() == ""){
+			$('#regLname').css("border-color","red");
+		}
+		else if($('#regPosition').val() == ""){
+			$('#regPosition').css("border-color","red");
+		}
+		$('#regUname').focus();}}]});
 		return false;  
 	}  
 	else if($('#regUname').val().length<4||$('#regPword').val().length<4){  
@@ -56,7 +79,9 @@ function validateAddUser() {
 	
 		$('#dialog').html('<center>กรุณาเลือกสถานะของผู้ใช้งาน</center>');
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#regStatus').focus();}}]});
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		$('#regStatus').css("border-color","red");
+		$('#regStatus').focus();}}]});
 		return false;  
 	}  
 	else if($('#regRePword').val()!=$('#regPword').val()){  
@@ -119,12 +144,20 @@ function validateAddUser() {
 //*****************************************************************************************//		
 function validateAddType() {
 	if ($('#addTypeCode').val() == ""
-	||$('#addTypeName').val()== ""
-	||$('#addTypeAddDate').val()== "")  
+	||$('#addTypeName').val()== "")  
 	{ 
 		$('#dialog').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#uname').focus();}}]});
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		if($('#addTypeCode').val() == ""){
+			$('#addTypeCode').css("border-color","red");
+			$('#addTypeCode').focus();
+		}
+		else if($('#addTypeName').val() == ""){
+			$('#addTypeName').css("border-color","red");
+			$('#addTypeName').focus();
+		}
+		}}]});
 		return false;  
 	}
 	else if($('#addTypeCode').val().length>2||$('#addTypeCode').val().length<2){
@@ -177,7 +210,16 @@ function validateAddGroup() {
 	{ 
 		$('#dialog').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#uname').focus();}}]});
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		if($('#addGroupCode').val() == ""){
+			$('#addGroupCode').css("border-color","red");
+			$('#addGroupCode').focus();
+		}
+		else if($('#addGroupName').val() == ""){
+			$('#addGroupName').css("border-color","red");
+			$('#addGroupName').focus();
+		}
+		}}]});
 		return false;  
 	}
 	else if($('#addGroupCode').val().length>2||$('#addGroupCode').val().length<2){
@@ -229,14 +271,29 @@ function validateAddAsset(){
 	{ 
 		$('#dialog').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );}}]});
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		if($('#addAssetType').val() == "00"){
+			$('#addAssetType').css("border-color","red");
+			$('#addAssetType').focus();
+		}
+		else if($('#addAssetGroup').val() == "00"){
+			$('#addAssetGroup').css("border-color","red");
+			$('#addAssetGroup').focus();
+		}
+		else if($('#addAssetAddDate').val() == ""){
+			$('#addAssetAddDate').css("border-color","red");
+			$('#addAssetAddDate').focus();
+		}
+		else if($('#addAssetName').val() == ""){
+			$('#addAssetName').css("border-color","red");
+			$('#addAssetName').focus();
+		}
+		else if($('#addAssetPrice').val() == ""){
+			$('#addAssetPrice').css("border-color","red");
+			$('#addAssetPrice').focus();
+		}
+		}}]});
 		return false;  
-	}
-	else if($('#addAssetCode').val()==""){
-		GenAssetCode();
-		$('#dialog').html('<center>ระบบทำการแสดงเลขครุภัณฑ์ให้ กรุณากดเพิ่มข้อมูลอีกรอบ</center>');
-		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );}}]});
 	}
 	else if(isNaN($('#addAssetPrice').val())){
 		$('#dialog').html('<center>กรุณาใส่ราคาครุภัณฑ์เป็นตัวแลข</center>');
@@ -259,6 +316,18 @@ function validateAddAsset(){
 		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
 		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );$('#regUname').focus();}}]});
 		return false;
+	}
+	else if($('#addAssetType').val() != "00"
+	&&$('#addAssetGroup').val() != "00"
+	&&$('#addAssetAddDate').val()!= ""
+	&&$('#addAssetName').val()!= ""
+	&&$('#addAssetPrice').val()!= ""
+	&&$('#addAssetCode').val()==""){
+		GenAssetCode();
+		$('#dialog').html('<center>ระบบทำการแสดงเลขครุภัณฑ์ล่าสุดให้</center>');
+		$('#dialog').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
+		buttons:[{text: "Ok",click: function(){$( this ).dialog( "close" );
+		addAsset(); }}]});
 	}
 	else if($('#addAssetCode').val()!=""){ 
 		var regExp = /^[0-9]+$/; 

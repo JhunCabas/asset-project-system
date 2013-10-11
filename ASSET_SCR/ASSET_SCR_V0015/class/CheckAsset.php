@@ -21,7 +21,7 @@
 		private $assetAddDate;
 		private $assetId;
 		private $checkDate;
-		private $CheckStatus;
+		private $checkStatus;
 		private $userId;
 		private $mysql;
 		private $error;

@@ -237,6 +237,8 @@ function delAsset(assetId){
 //*** เป็นชุด Function ที่ใช้ในการ แก้ไขข้อมูลผู้ใช้ ประเภท หมวด และครุภัณฑ์
 //*****************************************************************************************//
 function getEditPass(userId){
+	
+	
 	$('#dialog').html("<table><tr><td>รหัสผ่านเดิม :</td>"+
 				"<td><input id='confirmPass' type='password' value='' style='width: 150px;'></td></tr>"+
 				"<tr><td>รหัสผ่านใหม่ :</td>"+
@@ -247,7 +249,7 @@ function getEditPass(userId){
 	
 				$("#dialog").dialog({'title':'เปลี่ยนรหัสผ่าน',width:400,position: [600,200],
 					  buttons: {
-						'ตกลง': function() {
+						'ตกลง': function() { 
 							var regExp = /[^a-z0-9]/i; 
 							
 							if ($('#confirmPass').val() == "",
@@ -256,7 +258,18 @@ function getEditPass(userId){
 							{ 
 								$('#dialog2').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 								$('#dialog2').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
-								buttons:[{text: "Ok",click: function(){$('#dialog2').dialog( "close" );}}]});
+								buttons:[{text: "Ok",click: function(){
+									$('#dialog2').dialog( "close" );
+										if($('#confirmPass').val() == ""){
+											$('#confirmPass').css("border-color","red");
+										}
+										else if($('#newPass').val() == ""){
+											$('#newPass').css("border-color","red");
+										}
+										else if($('#conNewPass').val() == ""){
+											$('#conNewPass').css("border-color","red");
+										}
+									}}]});
 								return false;  
 							}  
 							else if($('#conNewPass').val()!=$('#newPass').val())  
@@ -273,7 +286,7 @@ function getEditPass(userId){
 								buttons:[{text: "Ok",click: function(){$('#dialog2').dialog( "close" );}}]});
 								return false;  
 							}  
-							else{
+							else{ 
 								$.get("../request/reqCheckPass.php",{'userId':userId,'opass':$('#confirmPass').val()},function(data)
 										{
 											if(data==1){
@@ -344,16 +357,29 @@ function getEditUser(userId)
 							||$('#editPos').val()== ""
 							||$('#editStat').val()== "")  
 							{ 
-								$('#addUser').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>'+$('#editStat').val());
-								$('#addUser').dialog({'title':'เกิดข้อผิดพลาด',
-								buttons:[{text: "Ok",click: function(){$('#addUser').dialog( "close" );$('#editFname').focus();}}]});
+								$('#addUser').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
+								$('#addUser').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
+								buttons:[{text: "Ok",click: function(){$('#addUser').dialog( "close" );
+										if($('#editFname').val() == ""){
+											$('#editFname').css("border-color","red");
+										}
+										else if($('#editLname').val() == ""){
+											$('#editLname').css("border-color","red");
+										}
+										else if($('#editPos').val() == ""){
+											$('#editPos').css("border-color","red");
+										}
+										
+								$('#editFname').focus();}}]});
 								return false;  
 							}  
 							else if($('#editStat').val()==0){  
 							
 								$('#addUser').html('<center>กรุณาเลือกสถานะของผู้ใช้งาน</center>');
-								$('#addUser').dialog({'title':'เกิดข้อผิดพลาด',
-								buttons:[{text: "Ok",click: function(){$('#addUser').dialog( "close" );$('#editStat').focus();}}]});
+								$('#addUser').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
+								buttons:[{text: "Ok",click: function(){$('#addUser').dialog( "close" );
+								$('#editStat').css("border-color","red");
+								$('#editStat').focus();}}]});
 								return false;  
 							}
 							else if(!regNum.test($('#editFname').val())){
@@ -418,8 +444,12 @@ function getEditType(assetTypeId){
 							if ($('#editTypeName').val()== "")  
 							{ 
 								$('#addType').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
-								$('#addType').dialog({'title':'เกิดข้อผิดพลาด',
-								buttons:[{text: "Ok",click: function(){$('#addType').dialog( "close" );$('#editTypeName').focus();}}]});
+								$('#addType').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
+								buttons:[{text: "Ok",click: function(){$('#addType').dialog( "close" );
+									if($('#editTypeName').val() == ""){
+											$('#editTypeName').css("border-color","red");
+										}
+								$('#editTypeName').focus();}}]});
 								return false;  
 							} 
 							else if(!regNum.test($('#editTypeName').val())){
@@ -480,8 +510,9 @@ function getEditGroup(assetGroupId)
 							if ($('#editGname').val() == "")  
 							{ 
 								$('#addGroup').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
-								$('#addGroup').dialog({'title':'เกิดข้อผิดพลาด',
+								$('#addGroup').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
 								buttons:[{text: "Ok",click: function(){$('#addGroup').dialog( "close" );
+								$('#editGname').css("border-color","red");
 								$('#editGname').focus();}}]});
 								return false;  
 							}  
@@ -554,6 +585,8 @@ function getEditAsset(assetId){
 				$("#editAddDate").val(val['assetAddDate']);
 				$("#editAddDate").datepicker({  
 					dateFormat: 'dd/mm/yy',
+					monthNamesShort: ['มกราคม','กุมภาพันธ์','มีนาคม','เมษายน','พฤษภาคม','มิถุนายน','กรกฎาคม','สิงหาคม',
+					'กันยายน','ตุลาคม','พฤศจิกายน','ธันวาคม'],
 					changeMonth: true,
 					changeYear: true ,
 					onChangeMonthYear: function(){  
@@ -592,6 +625,18 @@ function getEditAsset(assetId){
 									$('#addAsset').html('<center>กรุณาใส่ข้อมูลให้ครบถ้วน</center>');
 									$('#addAsset').dialog({'title':'เกิดข้อผิดพลาด',position: [600,200],
 									buttons:[{text: "Ok",click: function(){$('#addAsset').dialog( "close" );
+										if($('#editAssetName').val() == ""){
+											$('#editAssetName').css("border-color","red");
+										}
+										else if($('#editAssetPrice').val() == ""){
+											$('#editAssetPrice').css("border-color","red");
+										}
+										else if($('#editRemark').val() == ""){
+											$('#editRemark').css("border-color","red");
+										}
+										else if($('#editAddDate').val() == ""){
+											$('#editAddDate').css("border-color","red");
+										}
 									$('#editAssetName').focus();}}]});
 									return false;  
 							}
@@ -712,8 +757,8 @@ function onCheckD(checkId){
 //*****************************************************************************************//
 //*** เป็นชุด Function ที่ใช้ในการ ตรวจเช็คข้อมูลครุภัณฑ์ แต่ละสถานะ Y N D ผ่าน QR CODE
 //*****************************************************************************************//
-function onCheckQrY(checkId){
-	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"ใช้งานได้"},function(data)
+function onCheckQrY(checkId,userId){
+	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"ใช้งานได้",'userId':userId},function(data)
 	{
 		$('#checkQRMo').load();
 		var win = window.open('', '_self');
@@ -721,8 +766,8 @@ function onCheckQrY(checkId){
 		
 	});
 }
-function onCheckQrN(checkId){
-	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"ชำรุด"},function(data)
+function onCheckQrN(checkId,userId){
+	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"ชำรุด",'userId':userId},function(data)
 	{
 		$('#checkQRMo').load();
 		var win = window.open('', '_self');
@@ -730,9 +775,9 @@ function onCheckQrN(checkId){
 		
 	});
 }
-function onCheckQrD(checkId){
+function onCheckQrD(checkId,userId){
 	
-	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"เสื่อมสภาพ"},function(data)
+	$.get("request/reqUpdateCheck.php",{'checkId':checkId,'status':"เสื่อมสภาพ",'userId':userId},function(data)
 	{
 		$('#checkQRMo').load();
 		var win = window.open('', '_self');
@@ -1022,6 +1067,9 @@ function printReport(){
 		$("#dialog").dialog({ 'title':'เกิดข้อผิดพลาด',position: [600,200],
 					  buttons: {
 						'ตกลง': function() {
+						
+						   $('#assetYearPrint').css("border-color","red");
+									
 						   $(this).dialog('close');
 						}
 					  }
@@ -1039,38 +1087,59 @@ function printReport(){
 //*** เป็นชุด Function ที่ใช้ในการ สั่งพิมพ์ QR CODE
 //*****************************************************************************************//
 function printQR(){
-	
-	var selectBox = document.getElementById("assetYearQR");
-    var selectedYear = selectBox.options[selectBox.selectedIndex].value;
-	
-	var selectBox = document.getElementById("assetTypeQR");
-    var selectedType = selectBox.options[selectBox.selectedIndex].value;
-	
-	var selectBox = document.getElementById("assetGroupQR");
-    var selectedGroup = selectBox.options[selectBox.selectedIndex].value;
-	
-	var selectBox = document.getElementById("assetQRStart");
-    var selectedStart = selectBox.options[selectBox.selectedIndex].value;
-	
-	var selectBox = document.getElementById("assetQREnd");
-    var selectedEnd = selectBox.options[selectBox.selectedIndex].value;
-	
-	if(selectedStart>selectedEnd){
 		
-		$("#dialog").html('กรุณาใส่รหัสครุภัณฑ์ใหม่');
+	if($('#assetYearQR').val()=="0000"){
+		$("#dialog").html('กรุณาเลือกปี');
 		$("#dialog").dialog({ 'title':'เกิดข้อผิดพลาด',position: [600,200],
 					  buttons: {
 						'ตกลง': function() {
+						$('#assetYearQR').css("border-color","red");
 						   $(this).dialog('close');
 						}
 					  }
 					});
 	}
+	else if($('#assetTypeQR').val()=="00"){
+		$("#dialog").html('กรุณาเลือกประเภทครุภัณฑ์');
+		$("#dialog").dialog({ 'title':'เกิดข้อผิดพลาด',position: [600,200],
+					  buttons: {
+						'ตกลง': function() {
+						$('#assetTypeQR').css("border-color","red");
+						   $(this).dialog('close');
+						}
+					  }
+					});
+	}
+	else if($('#assetGroupQR').val()=="00"){
+		$("#dialog").html('กรุณาเลือกหมวดครุภัณฑ์');
+		$("#dialog").dialog({ 'title':'เกิดข้อผิดพลาด',position: [600,200],
+					  buttons: {
+						'ตกลง': function() {
+						$('#assetGroupQR').css("border-color","red");
+						   $(this).dialog('close');
+						}
+					  }
+					});
+	}
+		
+	else if($('#assetQRStart').val()>$('#assetQREnd').val()){
+		
+		$("#dialog").html('กรุณาใส่รหัสครุภัณฑ์ใหม่');
+		$("#dialog").dialog({ 'title':'เกิดข้อผิดพลาด',position: [600,200],
+					  buttons: {
+						'ตกลง': function() {
+						$('#assetQREnd').css("border-color","red");
+						   $(this).dialog('close');
+						}
+					  }
+					});
+	}
+
 	else{
-		$.get("../page/printQR.php",{'QRyear':selectedYear,'QRtype':selectedType,
-			'QRgroup':selectedGroup,
-			'QRassS':selectedStart,
-			'QRassE':selectedEnd},function(data)
+		$.get("../page/printQR.php",{'QRyear':$('#assetYearQR').val(),'QRtype':$('#assetTypeQR').val(),
+			'QRgroup':$('#assetGroupQR').val(),
+			'QRassS':$('#assetQRStart').val(),
+			'QRassE':$('#assetQREnd').val()},function(data)
 			{				
 				if (window.print) {
 					var w = window.open('','_new');
