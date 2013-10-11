@@ -49,12 +49,12 @@
 
 	$commandSearch = "AND CONCAT(SUBSTR(C.assetYear,3,4),'/',A.assetTypeCode,'-',A.assetTypeCode,B.assetGroupCode,'-',C.assetCode) LIKE '%".$searchCode."%'";
 	$commandYear = "AND C.assetYear = '".$yearFull."'";
-	$commandType = "AND A.assetTypeCode = '".$type."'";
-	$commandGroup = "AND B.assetGroupCode = '".$group."'";
-	$commandYT = "AND C.assetYear = '".$yearFull."' AND A.assetTypeCode = '".$type."'";
-	$commandYTG = "AND C.assetYear = '".$yearFull."' AND A.assetTypeCode = '".$type."' AND B.assetGroupCode = '".$group."'";
-	$commandTG = "AND C.assetTypeCode = '".$type."' AND B.assetGroupCode = '".$group."'";
-	$commandYG = "AND C.assetYear = '".$yearFull."' AND B.assetGroupCode = '".$group."'";
+	$commandType = "AND A.assetTypeId = '".$type."'";
+	$commandGroup = "AND B.assetGroupId = '".$group."'";
+	$commandYT = "AND C.assetYear = '".$yearFull."' AND A.assetTypeId = '".$type."'";
+	$commandYTG = "AND C.assetYear = '".$yearFull."' AND A.assetTypeId = '".$type."' AND B.assetGroupId = '".$group."'";
+	$commandTG = "AND C.assetTypeId = '".$type."' AND B.assetGroupId = '".$group."'";
+	$commandYG = "AND C.assetYear = '".$yearFull."' AND B.assetGroupId = '".$group."'";
 
 	$arrAll = $asset->getAsset();
 	$arrYear = $asset->getAssetBy($commandYear);

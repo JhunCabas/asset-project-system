@@ -36,9 +36,9 @@
 		$dateM = substr($upAssAddDate,0,6);
 		$month = substr($upAssAddDate,3,2);
 		$text = substr($upAssAddDate,6,4);
-		$text2 = substr($upAssAddDate,6,4);
+		$YearD = substr($upAssAddDate,6,4);
 		if($month>=10&&$month<=12){
-			$text2++;
+			$YearD++;
 		}
 		$year = $text-543;
 		$dateType = $dateM."".$year;
@@ -51,7 +51,7 @@
 			$updateAsset->setAssetPrice($upAssPrice);
 			$updateAsset->setRemark($upRemark);
 			$updateAsset->setAssetAddDate($dateT);
-			$updateAsset->setAssetYear($text2);
+			$updateAsset->setAssetYear($YearD);
 			$updateAsset->editAsset();
 			
 			$updateChk->setAssetId($assetId);

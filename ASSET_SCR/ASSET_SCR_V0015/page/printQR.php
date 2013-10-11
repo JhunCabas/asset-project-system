@@ -26,9 +26,9 @@
 		$rows=$dbAsset->num_rows($arr);
 		$x = ceil($rows/4);
 		echo "<center><table border='2'>";
-		for($r=1;$r<=$x;$r++){
+		for($r=1;$r<=$x;$r++){//กำหนดบรรทัด
 			echo "<tr>";
-				for($c=1;$c<=4;$c++){
+				for($c=1;$c<=4;$c++){//กำหนดว่า ครบ 4 column รึยัง
 					$i=0;
 					$j=4;
 					while($row=$dbAsset->fetch_array($arr)) {

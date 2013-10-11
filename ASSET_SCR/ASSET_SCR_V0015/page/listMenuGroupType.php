@@ -21,7 +21,7 @@
 	<option value="00">ประเภทครุภัณฑ์</option>
 <?php
 	while($rowT=$dbType->fetch_array($arr)) {
-		echo "<option value='".$rowT['assetTypeCode']."'>";
+		echo "<option value='".$rowT['assetTypeId']."'>";
 		echo $rowT['assetTypeCode']." ".$rowT['assetTypeName']."</option>";
 	}
 ?>

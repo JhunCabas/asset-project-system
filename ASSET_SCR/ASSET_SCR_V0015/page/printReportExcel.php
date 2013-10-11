@@ -15,7 +15,6 @@
 	$assetChk = new CheckAsset();
 	$db= new Config();
 	$year = $_GET['assetYear'];
-	$yearS = $year-543;
 	$arrYear = $assetChk->getCheckYear($year);
 	$arrCheck =  $assetChk->getCheckAssetByYear($year);
 	

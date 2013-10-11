@@ -27,9 +27,8 @@
 		$checkId = $_GET["checkId"];
 		$status = $_GET["status"];
 		$userId = $_GET["userId"];
-		if($userId==0){
-			$userId = $_SESSION["id"];
-		}
+		$userId = $_SESSION["id"];
+	
 		
 		if($status=="ใช้งานได้"){
 			$stat="Y";
